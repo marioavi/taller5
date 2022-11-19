@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1> Bienvenido </h1>
+
+    <button>Ingresar usuario</button>
+    <script>
+        let enacbezado = document.querySelector('h1');
+        const boton = document.querySelector('button')
+        function estableceNombreUsuario() {
+            let nuevoUsuario = prompt('Digite su nombre');
+            //localStorage.setItem('nombre', nuevoUsuario);
+            enacbezado.textContent = 'Bienvenido ' + nuevoUsuario;
+        }
+        boton.onclick = function () {
+            estableceNombreUsuario();
+        }
+    </script>
+</body>
+</html>

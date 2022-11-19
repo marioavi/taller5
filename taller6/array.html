@@ -1,0 +1,26 @@
+<h1>Pronbando 1...2...3..</h1>
+<h2>sd</h2>
+<p>Parrafo</p>
+<script>
+colores=['blue','red','white'];
+console.log(colores);
+console.log(colores.length);
+
+//recorrer
+for(let i=0;i <=3;i++ ){
+    console.log(colores[i]);
+}
+
+colores.forEach(elem =>{console.log(elem)});
+
+function saludar(nombre){
+    alert('hola ' + nombre);
+}
+
+function pedirNombre(callb){
+    let nom = prompt('Digite su nombre');
+    callb(nom);
+}
+
+pedirNombre(saludar);
+</script>

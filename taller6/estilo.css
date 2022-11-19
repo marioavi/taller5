@@ -1,0 +1,29 @@
+body{
+    display: grid;
+    grid-template-areas:
+     'a a a a'
+     'b b b c'
+     'd d d c'
+     'e e e e';
+}
+.encabezado{
+    background-color: blue;
+    grid-area: a;
+ }
+
+ .pie{
+    background-color: blue;
+    grid-area: e;
+ }
+.barra{
+    background-color: aqua;
+    grid-area: b;
+}
+.principal{
+    background-color: blueviolet;
+    grid-area: d;
+}
+.lateral {
+    background-color: chartreuse;
+    grid-area: c;
+}

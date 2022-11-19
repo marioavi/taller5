@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            background-color:#898AA6;
+        }
+
+        .centrado {
+            text-align: center;
+        }
+
+        form, footer {
+            background-color: #C9BBCF;
+        }
+    </style>
+    <script type="text/javascript">
+        async function traerPais() {
+            const fname = document.getElementById("fname").value;
+            const respuesta = await fetch("https://api.nationalize.io/?name=" + fname);
+            if (!respuesta.ok) {
+                let oops = "No encontré nada";
+                alert(oops);
+                throw new Error(oops);
+            }
+            const pais = respuesta.json();
+            return pais;
+        }
+
+        function consultar() {
+            traerPais().then(mostrarNombre);
+        }
+        function mostrarNombre(nombre) {
+            document.getElementById("pais1").innerHTML = nombre.country[0].country_id;
+            document.getElementById("prob1").innerHTML = nombre.country[0].probability;
+
+            document.getElementById("pais2").innerHTML = nombre.country[1].country_id;
+            document.getElementById("prob2").innerHTML = nombre.country[1].probability;
+
+            document.getElementById("pais3").innerHTML = nombre.country[2].country_id;
+            document.getElementById("prob3").innerHTML = nombre.country[2].probability;
+
+            /*https://api.nationalize.io/?name=michael*/
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <header class="centrado">
+        <h1> About my Name</h1>
+        <h3> Esta aplicación Permite saber de donde probablemente proviene su nombre</h3>
+        <h4>La aplicacion predice la nacionalidad de un nombre mediante inteligencia 
+            artificial a través de la API proporcionada por nationalize.io</h4>
+    </header>
+    <section>
+        <form class="centrado" action="">
+            <br>
+            <label for="fname"> Nombre:</label>
+            <input type="text" id="fname" name="fname"> <br> <br> <br>
+            <input type="button" value="Consultar" onclick="consultar()">
+        </form>
+        <article>
+            <p>Posibles Paises:</p>
+            <label for="">Pais 1: </label> <label id="pais1"></label> <label id="prob1"></label> <br>
+            <label for="">Pais 2: </label> <label id="pais2"></label> <label id="prob2"></label> <br>
+            <label for="">Pais 3: </label> <label id="pais3"></label> <label id="prob3"></label> <br>
+        </article>
+
+
+    </section>
+    <footer class="centrado">
+        <p> By Mario Avila, Julio de 2022</p>
+
+    </footer>
+    <script type="text/javascript">
+        /*mostrarNombre("Mario Luis Avila");*/
+    </script>
+
+</body>
+
+</html>

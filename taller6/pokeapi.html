@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="text-align:center ;">
+    <header>
+        <h1>API para consultar pokemeones</h1>
+        <label for="valor"></label>
+        <input type="text" id="valor" name="valor">
+        <br>
+        <input type="button" value="Consultar" onclick="consultar();">
+
+        <p id="mostrar"></p>
+        <br>
+        <br>
+       <img id="imagen" src="" alt="imagen cc">
+    </header>
+    <div id="contenedor">
+
+    </div>
+    <script>
+        valor = document.getElementById('valor');
+        mostrar = document.getElementById('mostrar');
+        imagen = document.getElementById('imagen');
+
+        function consultar() {   
+            api2(valor.value).then(muestre);
+        }
+
+        function muestre(pok){
+            mostrar.innerHTML = 'Nombre: ' + pok.name;
+            imagen.innerHTML = "src='" + pok.sprites.front_default+"'";
+            imagen.setAttribute('src',pok.sprites.front_default);
+            console.log(pok);
+        }
+        
+        async function  api2(pokemon){
+            const url = 'https://pokeapi.co/api/v2/pokemon/' + pokemon;
+            const respuesta = await fetch(url);
+            const rs= respuesta.json();
+            return rs;
+        }
+    </script>
+</body>
+
+</html>
